@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lease Management - Frontend</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-root">
+      <aside id="sidebar" class="sidebar hidden">
+        <div class="brand">LeaseMgmt</div>
+        <nav>
+          <ul>
+            <li data-route="dashboard" class="active">Dashboard</li>
+            <li data-route="properties">Properties</li>
+            <li data-route="leases">Lease Agreements</li>
+            <li data-route="payments">Payments</li>
+            <li data-route="disputes">Disputes</li>
+            <li data-route="profile">Profile</li>
+            <li id="logout">Logout</li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div id="roleLabel"></div>
+          <div>
+            <select id="roleSelect">
+              <option value="admin">Admin</option>
+              <option value="owner">Property Owner</option>
+              <option value="tenant">Tenant</option>
+              <option value="manager">Lease Manager</option>
+              <option value="dispute">Dispute Manager</option>
+            </select>
+            <button id="loginBtn">Login</button>
+          </div>
+        </header>
+
+        <section id="content" class="content">
+          <!-- Login / Role selection -->
+          <div id="loginView" class="view">
+            <h1>Sign in (select role)</h1>
+            <p>Choose your role to view the corresponding dashboard.</p>
+          </div>
+
+          <!-- Dashboards will be rendered here -->
+          <div id="dashboardView" class="view hidden"></div>
+          <div id="propertiesView" class="view hidden"></div>
+          <div id="leasesView" class="view hidden"></div>
+          <div id="paymentsView" class="view hidden"></div>
+          <div id="disputesView" class="view hidden"></div>
+          <div id="profileView" class="view hidden"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

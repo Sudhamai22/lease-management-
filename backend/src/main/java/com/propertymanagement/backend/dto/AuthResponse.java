@@ -1,6 +1,9 @@
 package com.propertymanagement.backend.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -8,6 +11,10 @@ import lombok.*;
 @AllArgsConstructor
 
 public class AuthResponse {
-
     private String message;
+    private Long userId;
+    private String name;
+    private String email;
+    private String role;
+    private String phoneNumber;
 }

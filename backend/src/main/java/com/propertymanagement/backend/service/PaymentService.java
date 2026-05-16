@@ -1,12 +1,13 @@
 package com.propertymanagement.backend.service;
 
-import com.propertymanagement.backend.entity.RentPayment;
-
 import java.util.List;
+
+import com.propertymanagement.backend.entity.RentPayment;
 
 public interface PaymentService {
 
     List<RentPayment> getPaymentsByLeaseId(Long leaseId);
+    List<RentPayment> getPaymentsByTenantId(Long tenantId);
 
     RentPayment savePayment(RentPayment payment);
 

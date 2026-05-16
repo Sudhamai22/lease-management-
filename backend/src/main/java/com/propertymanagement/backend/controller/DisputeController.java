@@ -1,12 +1,18 @@
 package com.propertymanagement.backend.controller;
 
-import com.propertymanagement.backend.entity.Dispute;
-import com.propertymanagement.backend.service.DisputeService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.propertymanagement.backend.entity.Dispute;
+import com.propertymanagement.backend.service.DisputeService;
 
 @RestController
 @RequestMapping("/api/disputes")
@@ -30,6 +36,20 @@ public class DisputeController {
             @PathVariable Long id) {
 
         return disputeService.resolveDispute(id);
+    }
+
+    @PutMapping("/{id}/review")
+    public Dispute reviewDispute(
+            @PathVariable Long id,
+            @RequestBody(required = false) Dispute payload) {
+
+        String remarks = null;
+        Long resolvedById = null;
+        if (payload != null) {
+            remarks = payload.getResolutionRemarks();
+            if (payload.getResolvedBy() != null) resolvedById = payload.getResolvedBy().getId();
+        }
+        return disputeService.reviewDispute(id, remarks, resolvedById);
     }
 
 

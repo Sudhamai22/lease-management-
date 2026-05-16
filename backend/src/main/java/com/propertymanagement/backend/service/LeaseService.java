@@ -1,8 +1,8 @@
 package com.propertymanagement.backend.service;
 
-import com.propertymanagement.backend.entity.LeaseAgreement;
-
 import java.util.List;
+
+import com.propertymanagement.backend.entity.LeaseAgreement;
 
 public interface LeaseService {
 
@@ -10,10 +10,11 @@ public interface LeaseService {
 
     LeaseAgreement saveLease(LeaseAgreement lease);
 
-    LeaseAgreement approveLease(Long id);
+    LeaseAgreement approveLease(Long id, Long approvedById, java.time.LocalDate leaseStart, java.time.LocalDate leaseEnd);
 
     List<LeaseAgreement> getAllLeases();
 
     LeaseAgreement getLeaseById(Long id);
+    java.util.List<LeaseAgreement> fixMissingApprovedLeases();
 
 }

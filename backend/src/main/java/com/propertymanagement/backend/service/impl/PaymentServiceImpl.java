@@ -1,14 +1,14 @@
 package com.propertymanagement.backend.service.impl;
 
-import com.propertymanagement.backend.entity.RentPayment;
-import com.propertymanagement.backend.exception.ResourceNotFoundException;
-import com.propertymanagement.backend.repository.PaymentRepository;
-import com.propertymanagement.backend.service.PaymentService;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import com.propertymanagement.backend.entity.RentPayment;
+import com.propertymanagement.backend.exception.ResourceNotFoundException;
+import com.propertymanagement.backend.repository.PaymentRepository;
+import com.propertymanagement.backend.service.PaymentService;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -22,6 +22,11 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public List<RentPayment> getPaymentsByLeaseId(Long leaseId) {
         return paymentRepository.findByLeaseAgreement_Id(leaseId);
+    }
+
+    @Override
+    public List<RentPayment> getPaymentsByTenantId(Long tenantId) {
+        return paymentRepository.findByLeaseAgreement_Tenant_Id(tenantId);
     }
 
     @Override
